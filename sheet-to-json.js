@@ -1,56 +1,55 @@
+
 const fs = require('fs');
-const fetch = require('node-fetch');
+const drive = require("drive-db");
 
-sheet_id="ovd0hzm";
-let url = "https://spreadsheets.google.com/feeds/cells/1nzXUdaIWC84QipdVGUKTiCSc5xntBbpMpzLm6Si33zk/"+sheet_id+"/public/values?alt=json";
+const SHEET = "1nzXUdaIWC84QipdVGUKTiCSc5xntBbpMpzLm6Si33zk";
+const SHEET_STATEWISE_TAB = 2;
+const SHEET_CASES_TIME_SERIES_TAB = 3;
+
+const tabs = {
+  statewise: SHEET_STATEWISE_TAB,
+  cases_time_series: SHEET_CASES_TIME_SERIES_TAB,
+};
+
+async function fetchData() {
+  const data = await Promise.all(
+    Object.keys(tabs).map(async tab => {
+      return {
+        [tab]: await drive({ sheet: SHEET, tab: tabs[tab] })
+      };
+    })
+  );
+
+  let mergedData = {};
+
+  data.forEach(obj => {
+    mergedData = { ...mergedData, ...obj };
+  });
+
+  return mergedData;
+}
+
+async function writeData(data) {
+  const fileContent = JSON.stringify(data,null,"\t");
+  return await fs.writeFileSync('data.json', fileContent);;
+}
+
+async function task() {
+  console.log("Fetching data from sheets...");
+  const data = await fetchData();
+  console.log("Writing data to json file...");
+  await writeData(data);
+  console.log("Opertion completed!");
+}
 
 
+async function main() {
+    console.log("Running task on start...");
+    await task();
+    console.log("Created Json File With Updated Contents");
 
+}
 
-let flag = 1;
-fs.readFile('data.json', (err, data) => {
-  if (err) {
-    flag = 0;
-    return
-  }
-  console.log(data);
-});
+main();
 
-let settings = { method: "Get" };
-fetch(url, settings)
-    .then(res => res.json())
-    .then((json) => {
-
-      console.log(json.feed.updated.$t);
-
-//validating json file
-      function IsValidJSONString(str) {
-        try {
-          JSON.parse(str);
-        } catch (e) {
-
-          return false;
-        }
-        return true;
-      }
-
-      let rawdata = fs.readFileSync('data.json') ;
-
-      if (flag == 1 && IsValidJSONString(rawdata)) {
-        // rewriting invalid data
-        old = JSON.parse(rawdata);	// old json
-        console.log(old.feed.updated.$t);
-        json.feed.updated.$t = old.feed.updated.$t;
-
-        for(i=0;i<json.feed.entry.length;i++) {
-          json.feed.entry[i].updated.$t = old.feed.updated.$t;
-        }
-
-        console.log(old.feed.entry.length);
-        console.log(json.feed.updated.$t);
-      }
-
-      latest =JSON.stringify(json,null,"\t");
-      fs.writeFileSync('data.json', latest);
-      console.log("completed the op!");
-    });
+// source https://github.com/reustle/covid19japan/blob/master/scripts/cache-spreadsheet-data/cache-sheet.js , and made the changes accordingly
