@@ -1,4 +1,4 @@
-
+#!/usr/bin/env bash
 
 set -eu
 
@@ -6,7 +6,6 @@ repo_uri="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
 remote_name="origin"
 main_branch="master"
 target_branch="master"
-
 
 cd "$GITHUB_WORKSPACE"
 
@@ -19,13 +18,18 @@ git rebase "${remote_name}/${main_branch}"
 npm install node-fetch
 node sheet-to-json.js
 
-git add data.json 
-
-git commit -m "updated data.json"
-if [ $? -ne 0 ]; then
-    echo "nothing to commit"
-    exit 0
+git add data.json
+set +e  # Grep succeeds with nonzero exit codes to show results.
+git status | grep modified
+if [ $? -eq 0 ]
+then
+    set -e
+    git commit -am "data updated on - $(date)"
+    git remote set-url "$remote_name" "$repo_uri" # includes access token
+    git push --force-with-lease "$remote_name" "$target_branch"
+else
+    set -e
+    echo "No changes since last run"
 fi
 
-git remote set-url "$remote_name" "$repo_uri" # includes access token
-git push --force-with-lease "$remote_name" "$target_branch"
+echo "finish the Workflow"
