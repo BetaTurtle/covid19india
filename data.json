@@ -2,12 +2,12 @@
 	"statewise": [
 		{
 			"state": "Total",
-			"confirmed": "199",
+			"confirmed": "200",
 			"recovered": "20",
 			"deaths": "4",
-			"active": "175",
+			"active": "176",
 			"lastupdatedtime": "March 20, 2020 at 12:05 am",
-			"confirmeddeltayesterday": "0",
+			"confirmeddeltayesterday": "1",
 			"deceaseddelta": "0",
 			"recovereddelta": "0",
 			"statesdelta": "0",
@@ -254,7 +254,7 @@
 		},
 		{
 			"state": "West Bengal",
-			"confirmed": "1",
+			"confirmed": "2",
 			"recovered": "0",
 			"deaths": "0",
 			"active": "1",
@@ -542,7 +542,7 @@
 			"totalrecovered": "0",
 			"dailydeceased": "0",
 			"totaldeceased": "0",
-			"confirmeddeltayesterday": "0",
+			"confirmeddeltayesterday": "1",
 			"recovereddelta": "0",
 			"deceaseddelta": "0"
 		},
