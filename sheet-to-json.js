@@ -6,6 +6,9 @@ const SHEET = "1nzXUdaIWC84QipdVGUKTiCSc5xntBbpMpzLm6Si33zk";
 const SHEET_STATEWISE_TAB = 2;
 const SHEET_CASES_TIME_SERIES_TAB = 3;
 
+const dir='./docs'
+const filename = '/data.json'
+
 const tabs = {
   statewise: SHEET_STATEWISE_TAB,
   cases_time_series: SHEET_CASES_TIME_SERIES_TAB,
@@ -31,7 +34,10 @@ async function fetchData() {
 
 async function writeData(data) {
   const fileContent = JSON.stringify(data,null,"\t");
-  return await fs.writeFileSync('data.json', fileContent);;
+  if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+  }
+  return await fs.writeFileSync(dir+filename, fileContent);;
 }
 
 async function task() {
