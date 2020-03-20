@@ -14,7 +14,6 @@ const tabs = {
   statewise: SHEET_STATEWISE_TAB,
   cases_time_series: SHEET_CASES_TIME_SERIES_TAB,
   key_valyes: SHEET_KEY_VALUES_TAB,
-
 };
 
 async function fetchData() {
@@ -27,7 +26,7 @@ async function fetchData() {
         };
       } catch (err) {
         if(err){
-          console.log("Worksheet Error: Look like worksheet "+ tab +" is empty or no data are not loaded yet in the fields")
+          console.log("Worksheet Error: Look like worksheet "+ tab +" is empty or no data are not loaded yet in the fields");
         }
       }
     })
