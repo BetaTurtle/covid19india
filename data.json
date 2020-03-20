@@ -2,12 +2,12 @@
 	"statewise": [
 		{
 			"state": "Total",
-			"confirmed": "200",
+			"confirmed": "206",
 			"recovered": "20",
 			"deaths": "4",
-			"active": "176",
+			"active": "182",
 			"lastupdatedtime": "March 20, 2020 at 12:05 am",
-			"confirmeddeltayesterday": "1",
+			"confirmeddeltayesterday": "7",
 			"deceaseddelta": "0",
 			"recovereddelta": "0",
 			"statesdelta": "0",
@@ -100,10 +100,10 @@
 		},
 		{
 			"state": "Delhi",
-			"confirmed": "14",
+			"confirmed": "17",
 			"recovered": "3",
 			"deaths": "1",
-			"active": "10",
+			"active": "13",
 			"lastupdatedtime": "",
 			"confirmeddeltayesterday": "",
 			"deceaseddelta": "",
@@ -128,10 +128,10 @@
 		},
 		{
 			"state": "Ladakh",
-			"confirmed": "8",
+			"confirmed": "10",
 			"recovered": "0",
 			"deaths": "0",
-			"active": "8",
+			"active": "10",
 			"lastupdatedtime": "",
 			"confirmeddeltayesterday": "",
 			"deceaseddelta": "",
@@ -198,10 +198,10 @@
 		},
 		{
 			"state": "Punjab",
-			"confirmed": "2",
+			"confirmed": "3",
 			"recovered": "0",
 			"deaths": "1",
-			"active": "1",
+			"active": "2",
 			"lastupdatedtime": "",
 			"confirmeddeltayesterday": "",
 			"deceaseddelta": "",
@@ -239,8 +239,8 @@
 			"numuniquestatesyesterday": ""
 		},
 		{
-			"state": "Puducherry",
-			"confirmed": "1",
+			"state": "West Bengal",
+			"confirmed": "2",
 			"recovered": "0",
 			"deaths": "0",
 			"active": "1",
@@ -253,8 +253,8 @@
 			"numuniquestatesyesterday": ""
 		},
 		{
-			"state": "West Bengal",
-			"confirmed": "2",
+			"state": "Puducherry",
+			"confirmed": "1",
 			"recovered": "0",
 			"deaths": "0",
 			"active": "1",
@@ -542,7 +542,7 @@
 			"totalrecovered": "0",
 			"dailydeceased": "0",
 			"totaldeceased": "0",
-			"confirmeddeltayesterday": "1",
+			"confirmeddeltayesterday": "7",
 			"recovereddelta": "0",
 			"deceaseddelta": "0"
 		},
