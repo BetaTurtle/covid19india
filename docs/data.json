@@ -1070,5 +1070,16 @@
 			"recovereddelta": "",
 			"deceaseddelta": ""
 		}
+<<<<<<< HEAD
+=======
+	],
+	"key_valyes": [
+		{
+			"lastupdatedtime": "",
+			"confirmeddelta": "0",
+			"recovereddelta": "0",
+			"deceaseddelta": "0"
+		}
+>>>>>>> 57914a7a697695b433101eac47ac9a38f6f0516b
 	]
 }
