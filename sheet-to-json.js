@@ -5,10 +5,7 @@ const drive = require("drive-db");
 const SHEET = "1nzXUdaIWC84QipdVGUKTiCSc5xntBbpMpzLm6Si33zk";
 const SHEET_STATEWISE_TAB = "ovd0hzm"
 const SHEET_CASES_TIME_SERIES_TAB = "o6emnqt"
-<<<<<<< HEAD
-=======
 const SHEET_KEY_VALUES_TAB = "owlnkho"
->>>>>>> 57914a7a697695b433101eac47ac9a38f6f0516b
 
 const dir='./docs'
 const filename = '/data.json'
@@ -16,18 +13,23 @@ const filename = '/data.json'
 const tabs = {
   statewise: SHEET_STATEWISE_TAB,
   cases_time_series: SHEET_CASES_TIME_SERIES_TAB,
-<<<<<<< HEAD
-=======
   key_valyes: SHEET_KEY_VALUES_TAB,
->>>>>>> 57914a7a697695b433101eac47ac9a38f6f0516b
+
 };
 
 async function fetchData() {
   const data = await Promise.all(
     Object.keys(tabs).map(async tab => {
-      return {
-        [tab]: await drive({ sheet: SHEET, tab: tabs[tab] })
-      };
+
+      try { // handle the errors worksheet not availabe, no values where found on worksheets
+        return {
+          [tab]: await drive({ sheet: SHEET, tab: tabs[tab] })
+        };
+      } catch (err) {
+        if(err){
+          console.log("Worksheet Error: Look like worksheet "+ tab +" is empty or no data are not loaded yet in the fields")
+        }
+      }
     })
   );
 
