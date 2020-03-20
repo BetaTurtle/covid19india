@@ -3,8 +3,8 @@ const fs = require('fs');
 const drive = require("drive-db");
 
 const SHEET = "1nzXUdaIWC84QipdVGUKTiCSc5xntBbpMpzLm6Si33zk";
-const SHEET_STATEWISE_TAB = 2;
-const SHEET_CASES_TIME_SERIES_TAB = 3;
+const SHEET_STATEWISE_TAB = "ovd0hzm"
+const SHEET_CASES_TIME_SERIES_TAB = "o6emnqt"
 
 const dir='./docs'
 const filename = '/data.json'
